@@ -1,1 +1,4 @@
-# scala4impatient
+'Scala for the Impatient' Book
+=============================
+
+# Exercises Solutions
