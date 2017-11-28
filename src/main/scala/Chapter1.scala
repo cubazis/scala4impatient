@@ -182,7 +182,7 @@ object Chapter1 {
                 println("Last symbol of 'String' word: "+str(str.length - 1))
         }
 
-        /** Task 10: */
+        /** Task 10: take, takeRight, drop, dropRight */
         def task10(unit: Unit) : Unit = {
                 var str: String = "String"
                 println("take: Selects the first n elements")
