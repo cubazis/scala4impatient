@@ -6,8 +6,10 @@ import scala.util.Random
   */
 object Chapter1 {
         def main(args: Array[String]): Unit = {
+                println("Here are some practice code from the text of Chapter 1")
                 repl()
-                //tasks()
+                println("Here are tasks code from the end of Chapter 1")
+                tasks()
         }
 
 
@@ -94,13 +96,18 @@ object Chapter1 {
 
                 /** ScalaDoc */
                 // TODO: https://github.com/swagger-api/swagger-scala-module
+
+                /** Some stuff */
+                println("Hello".count(_.isUpper))
+                println("Hello".count(_.isLower))
+                println("Harry".patch(1, "ung", 2))
         }
 
         /** Here are tasks code from the end of Chapter 1 */
         def tasks(unit: Unit) : Unit = {
                 task1()
                 task2()
-                // res variables are VAL
+                task3()
                 task4()
                 task5()
                 task6()
@@ -110,7 +117,7 @@ object Chapter1 {
                 task10()
         }
 
-        /** Task 1: методы применимые к числу 3*/
+        /** Task 1: var res0 : Int = 3, res0.methods() */
         def task1(unit: Unit) : Unit = {
                 println("Result of mod 3.%(2) = "+3.%(2))
                 println("Result of mod 3%2 = "+3%2)
@@ -122,10 +129,17 @@ object Chapter1 {
                 println("Result of 3.asInstanceOf[Char] = "+3.asInstanceOf[Char])
         }
 
+        /** Task 2: diff between 3 and pow(sqrt(3)) */
         def task2(unit: Unit) : Unit = {
                 println(3 - math.pow(math.sqrt(3), 2))
         }
 
+        /** Task 3: res variables */
+        def task3(unit: Unit): Unit = {
+                println("res variables in REPL are VAL, and they are immutable")
+        }
+
+        /** Task 4: String multiplied by num*/
         def task4(unit: Unit) : Unit = {
                 var kek = "kek"*2 // Can be found in the StringOps class
                 println(kek)
@@ -133,26 +147,33 @@ object Chapter1 {
                 println(kek)
         }
 
+        /** Task 5: min max methods */
         def task5(unit: Unit) : Unit = {
                 println("10 max 3: "+(10 max 3))
                 println("10.max(3): "+10.max(3))
                 println("10 min 3: "+(10 min 3))
                 println("10.min(3): "+10.min(3))
+                println("min/max methods defined in RichInt.scala class")
         }
 
+        /** Task 6: BigInt(2).pow(1024) */
         def task6(unit: Unit) : Unit = {
                 println("BigInt(2).pow(1024): "+BigInt(2).pow(1024))
                 println("BigInt(2) pow 1024: "+(BigInt(2) pow 1024))
         }
 
+        /** Task 7: What has to be imported to calculate probablePrime(100, Random) */
         def task7(unit: Unit) : Unit = {
+                println("'scala.math.BigInt.probablePrime' has to be imported")
                 println(probablePrime(100, Random))
         }
 
+        /** Task 8: Convert BigInt to base 36 and get random String*/
         def task8(unit: Unit) : Unit = {
-                println(probablePrime(100, Random).toString(36)) //Convert BigInt to base 36
+                println(probablePrime(100, Random).toString(36))
         }
 
+        /** Task 9: First/Last symbols of "String" word */
         def task9(unit: Unit) : Unit = {
                 val str = "String"
                 println("First symbol of 'String' word: "+str.head)
@@ -161,8 +182,9 @@ object Chapter1 {
                 println("Last symbol of 'String' word: "+str(str.length - 1))
         }
 
+        /** Task 10: */
         def task10(unit: Unit) : Unit = {
-                var str: String = "kek"
+                var str: String = "String"
                 println("take: Selects the first n elements")
                 println("str.take(0) "+str.take(0))
                 println("str.take(1) "+str.take(1))
