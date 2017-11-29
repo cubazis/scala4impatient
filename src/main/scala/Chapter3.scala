@@ -10,7 +10,9 @@ object Chapter3 {
         }
 
         /** Here are some practice code from the text of Chapter 3 */
-        def repl(unit: Unit): Unit = {}
+        def repl(unit: Unit): Unit = {
+
+        }
 
         /** Here are tasks code from the end of Chapter 3 */
         def tasks(unit: Unit): Unit = {}

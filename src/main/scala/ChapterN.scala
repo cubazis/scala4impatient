@@ -9,9 +9,9 @@ object ChapterN {
                 tasks()
         }
 
-        /** Here are some practice code from the text of Chapter N */
-        def repl(unit: Unit): Unit = {}
-
         /** Here are tasks code from the end of Chapter N */
         def tasks(unit: Unit): Unit = {}
+
+        /** Here are some practice code from the text of Chapter N */
+        def repl(unit: Unit): Unit = {}
 }
