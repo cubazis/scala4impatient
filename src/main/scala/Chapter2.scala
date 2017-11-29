@@ -9,19 +9,116 @@ import scala.math.pow
 object Chapter2 {
         def main(args: Array[String]): Unit = {
                 println("Here are some practice code from the text of Chapter 2")
-                repl()
+                //repl()
                 println("Here are tasks code from the end of Chapter 2")
-                //tasks()
+                tasks()
         }
 
+        /** Here are tasks code from the end of Chapter 2 */
+        def tasks(unit: Unit): Unit = {
+                task1()
+                task2()
+                task3()
+                task4()
+                task5()
+                task6()
+                task7()
+                //task8 is already done as a function
+                task9()
+                task10()
+        }
+
+        def task10():Unit = {
+                def xpown(x: BigDecimal, n: Int): BigDecimal = {
+                        if (n == 0) 1
+                        else if (n < 0) 1 / xpown(x, -n)
+                        else if (n % 2 == 0) {
+                                val i = xpown(x, n / 2)
+                                i * i
+                        }
+                        else x * xpown(x, n - 1)
+                }
+                xpown(2, 1024)
+                xpown(-2, -10)
+                xpown(-2, 10)
+        }
+
+        def task9():Unit = {
+                def unicode_prodaction(str: String): BigInt = {
+                        if(str.length == 0) 1 else str.head * unicode_prodaction(str.tail)
+                }
+                println(unicode_prodaction("Hello"))
+        }
+
+        def task7():Unit = {
+                def unicode_prodaction(str: String): BigInt = {
+                        str.foldLeft(1: BigInt)((a, b) => a * b.toInt)
+                }
+                println(unicode_prodaction("Hello"))
+        }
+
+        def task6():Unit = {
+                def unicode_prodaction(str: String): BigInt = {
+                        var prod: BigInt = 1
+                        for(c <- "Hello") prod *= c.toInt
+                        prod
+                }
+                println(unicode_prodaction("Hello"))
+        }
+
+        def task5():Unit = {
+                def countdoun(n:Int): Unit ={
+                        for(i <- n to 0 by -1) println(i)
+                }
+                countdoun(5)
+        }
+
+        def task4():Unit = {
+                for (i <- 10.to(0, -1)) print(i+" ")
+                println()
+                //same
+                for (i <- 10 to 0 by -1) print(i+" ")
+                println()
+                //same
+                for (i <- 10.to(0) by -1) print(i+" ")
+                println()
+                //same
+                for (i <- 10.to(0).by(-1)) print(i+" ")
+                println()
+        }
+
+        def task3():Unit = {
+                var y = 0
+                val x: Unit = y = 1
+                println(x)
+                println(x.isInstanceOf[Unit])
+        }
+
+        def task2():Unit = {
+                val blank = {}
+                println(blank)
+                println(blank.getClass)
+                println(blank.isInstanceOf[Unit])
+        }
+
+        def task1():Unit = {
+                def signum(n:Int) = {
+                        if(n > 0) 1 else if (n < 0) -1 else 0
+                }
+                println(signum(-42))
+                println(signum(42))
+                println(signum(0))
+        }
+
+        /** Here are some practice code from the text of Chapter 2 */
         def repl(unit: Unit): Unit = {
-                //proc_hebrew()
-                //func_name_age()
-                //func_if_else()
-                //func_demonstrates_types()
-                //func_demonstrates_scope()
-                //func_demonstrates_for()
-                //proc_functions_features("procedure")
+                proc_hebrew()
+                func_name_age()
+                func_if_else()
+                func_demonstrates_types()
+                func_demonstrates_scope()
+                func_demonstrates_for()
+                proc_functions_features("procedure")
                 proc_exception()
         }
 
@@ -254,91 +351,5 @@ object Chapter2 {
         def proc_hebrew() {
                 for (i <- 1488 to 1514) print(i.toChar + " ")
                 println()
-        }
-
-
-        def tasks(unit: Unit): Unit = {
-                task1()
-                task2()
-                task3()
-                task4()
-                task5()
-                task6()
-                task7()
-                //task8 is already done as a function
-                task9()
-                task10()
-        }
-
-        def task10():Unit = {
-                def xpown(x: BigDecimal, n: Int): BigDecimal = {
-                        if (n == 0) 1
-                        else if (n < 0) 1 / xpown(x, -n)
-                        else if (n % 2 == 0) {
-                                val i = xpown(x, n / 2)
-                                i * i
-                        }
-                        else x * xpown(x, n - 1)
-                }
-                xpown(2, 1024)
-                xpown(-2, -10)
-                xpown(-2, 10)
-        }
-
-        def task9():Unit = {
-                def unicode_prodaction(str: String): BigInt = {
-                        if(str.length == 0) 1 else str.head * unicode_prodaction(str.tail)
-                }
-                println(unicode_prodaction("Hello"))
-        }
-
-        def task7():Unit = {
-                def unicode_prodaction(str: String): BigInt = {
-                        str.foldLeft(1: BigInt)((a, b) => a * b.toInt)
-                }
-                println(unicode_prodaction("Hello"))
-        }
-
-        def task6():Unit = {
-                def unicode_prodaction(str: String): BigInt = {
-                        var prod: BigInt = 1
-                        for(c <- "Hello") prod *= c.toInt
-                        prod
-                }
-                println(unicode_prodaction("Hello"))
-        }
-
-        def task5():Unit = {
-                def countdoun(n:Int): Unit ={
-                        for(i <- n.to(0, -1)) println(i)
-                }
-                countdoun(5)
-        }
-
-        def task4():Unit = {
-                for (i <- 10.to(0, -1)) println(i)
-        }
-
-        def task3():Unit = {
-                var y = 0
-                val x:Unit = y = 1
-                println(x)
-                println(x.isInstanceOf[Unit])
-        }
-
-        def task2():Unit = {
-                val blank = {}
-                println(blank)
-                println(blank.getClass)
-                println(blank.isInstanceOf[Unit])
-        }
-
-        def task1():Unit = {
-                def signum(n:Int) = {
-                        if(n > 0) 1 else if (n < 0) -1 else 0
-                }
-                println(signum(-42))
-                println(signum(42))
-                println(signum(0))
         }
 }
