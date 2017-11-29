@@ -9,7 +9,7 @@ import scala.math.pow
 object Chapter2 {
         def main(args: Array[String]): Unit = {
                 println("Here are some practice code from the text of Chapter 2")
-                //repl()
+                repl()
                 println("Here are tasks code from the end of Chapter 2")
                 tasks()
         }
