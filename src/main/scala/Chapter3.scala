@@ -22,11 +22,15 @@ object Chapter3 {
                   */
 
                 val array = new Array[Int](7)
+                println(array(0))
                 println(array.mkString("< ", ", ", " >"))
                 for (i <- array.indices) array(i) = i*2
                 println(array.mkString("< ", ", ", " >"))
 
-                println(array.mkString("< ", ", ", " >"))
+                println((for (i <- array.indices if i % 2 == 0) yield 2 * array(i)).mkString("< ", ", ", " >"))
+
+                //sila
+                println(array.filter(_ % 2 == 0).map(2 * _).mkString("< ", ", ", " >"))
 
                 val s = Array("First", "Second", "Third")
                 println(s.mkString("< ", ", ", " >"))
@@ -42,7 +46,7 @@ object Chapter3 {
                 println(buffer.mkString("< ", ", ", " >"))
 
                 /** Look here! It's cool
-                  * ++= method add whole array to buffer
+                  * ++= method add ANY COLLECTION to buffer
                   */
                 buffer ++= Array(8, 15, 16, 23, 42)
                 println(buffer.mkString("< ", ", ", " >"))
@@ -89,6 +93,35 @@ object Chapter3 {
                 println()
 
                 /** array transforming */
+                val seq = ArrayBuffer(-7,2,-1,-4,3)
+
+                /** collect indexes of positive sequence elements */
+                var first = true
+                val indexes = for (i <- seq.indices if first || seq(i) >= 0) yield {
+                        if(seq(i) < 0) first = false; i
+                }
+                //println(indexes.mkString("< ", ", ", " >"))
+
+                for (j <- indexes.indices) seq(j) = seq(indexes(j))
+                println(seq.mkString("< ", ", ", " >"))
+
+                //trim other elements
+                seq.trimEnd(seq.length - indexes.length)
+                println(seq.mkString("< ", ", ", " >"))
+
+                /** main algorithms */
+                val sBuffer1 = ArrayBuffer(1, 3, 4, 7, 3, 9, 3, 8)
+                val sBuffer2 = sBuffer1.sorted
+                println(sBuffer2.mkString("< ", ", ", " >"))
+
+                /** multidimensional arrays */
+                val matrix = Array.ofDim[Double](2, 2)
+                matrix(0)(0) = 1
+                matrix(0)(1) = 2
+                matrix(1)(0) = 2
+                matrix(1)(1) = 1
+                println(matrix(0)(0) + " " + matrix(0)(1))
+                println(matrix(1)(0) + " " + matrix(1)(1))
 
 
                 /** a miserable function for printing arrays */
