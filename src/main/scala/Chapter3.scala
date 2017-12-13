@@ -6,13 +6,107 @@ import scala.collection.mutable.ArrayBuffer
 object Chapter3 {
         def main(args: Array[String]): Unit = {
                 println("Here are some practice code from the text of Chapter 3")
-                repl()
+                //repl()
                 println("Here are tasks code from the end of Chapter 3")
                 tasks()
         }
 
         /** Here are tasks code from the end of Chapter 3 */
-        def tasks(unit: Unit): Unit = {}
+        def tasks(unit: Unit): Unit = {
+                task1()
+                task2()
+                task3()
+                task4()
+                task5()
+                task6()
+                task7()
+                task8()
+                task9()
+                task10()
+        }
+
+        def task1(unit: Unit): Unit = {
+                println("Task 1")
+                println(func(5).mkString("< ", ", ", " >"))
+                def func(n: Int): Array[Int] = { val b = (for (i <- 0 until n) yield i).toArray; b }
+        }
+
+        def task2(unit: Unit): Unit = {
+                println("Task 2")
+                var a: Array[Int] = null
+                a = createArray(5)
+                println(a.mkString("< ", ", ", " >"))
+                a = swapPairInArray(a)
+                println(a.mkString("< ", ", ", " >"))
+
+                a = createArray(6)
+                println(a.mkString("< ", ", ", " >"))
+                a = swapPairInArray(a)
+                println(a.mkString("< ", ", ", " >"))
+
+                def swapPairInArray(a: Array[Int]) : Array[Int] = {
+                        var i = 1
+                        var temp = 0
+                        while (i < a.length){
+                                temp = a(i-1)
+                                a(i-1) = a(i)
+                                a(i) = temp
+                                i += 2
+                        }
+                        a
+                }
+
+                def createArray(n: Int): Array[Int] = { val b = (for (i <- 1 to n) yield i).toArray; b }
+        }
+
+        def task3(unit: Unit): Unit = {
+                println("Task 3")
+                def createArray(n: Int): Array[Int] = {(for (i <- 1 to n) yield i).toArray}
+                def swapPairInArray(a: Array[Int]): Array[Int] = {val b = (for (i <- a.indices) yield if (i % 2 == 1) a(i - 1) else if (i != a.length-1) a(i+1) else a(i)).toArray; b}
+                def swapPairFP(a: Array[Int]): Array[Int] = { val b = (1 to a.length).iterator.sliding(2, 2).map(x => Array(x.last, x.head).distinct).flatten.toArray; b}
+
+                def demo(n: Int): Unit = {
+                        println(createArray(n).mkString("< ", ", ", " >"))
+                        println(swapPairInArray(createArray(n)).mkString("< ", ", ", " >"))
+                }
+                //in functional style
+                def fdemo(n: Int): Unit = {
+                        println(createArray(n).mkString("< ", ", ", " >"))
+                        println(swapPairFP(createArray(n)).mkString("< ", ", ", " >"))
+                }
+
+                demo(5); fdemo(5)
+                demo(6); fdemo(6)
+
+        }
+
+        def task4(unit: Unit): Unit = {
+
+        }
+
+        def task5(unit: Unit): Unit = {
+
+        }
+
+        def task6(unit: Unit): Unit = {
+
+        }
+
+        def task7(unit: Unit): Unit = {
+
+        }
+
+        def task8(unit: Unit): Unit = {
+
+        }
+
+        def task9(unit: Unit): Unit = {
+
+        }
+
+        def task10(unit: Unit): Unit = {
+
+        }
 
         /** Here are some practice code from the text of Chapter 3 */
         def repl(unit: Unit): Unit = {
