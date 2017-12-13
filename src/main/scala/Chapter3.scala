@@ -12,14 +12,13 @@ import scala.collection.mutable.Buffer
 object Chapter3 {
         def main(args: Array[String]): Unit = {
                 println("Here are some practice code from the text of Chapter 3")
-                //repl()
+                repl()
                 println("Here are tasks code from the end of Chapter 3")
                 tasks()
         }
 
         /** Here are tasks code from the end of Chapter 3 */
         def tasks(unit: Unit): Unit = {
-/*
                 task1()
                 task2()
                 task3()
@@ -29,7 +28,6 @@ object Chapter3 {
                 task7()
                 task8()
                 task9()
-*/
                 task10()
         }
 
