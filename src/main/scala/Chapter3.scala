@@ -1,4 +1,10 @@
 import scala.collection.mutable.ArrayBuffer
+import ToolsC3._
+import java.util.TimeZone.getAvailableIDs
+import java.awt.datatransfer._
+import scala.collection.JavaConverters._
+import scala.collection.mutable.Buffer
+
 
 /**
   * Created by cubazis on 28.11.17.
@@ -13,6 +19,7 @@ object Chapter3 {
 
         /** Here are tasks code from the end of Chapter 3 */
         def tasks(unit: Unit): Unit = {
+/*
                 task1()
                 task2()
                 task3()
@@ -22,8 +29,12 @@ object Chapter3 {
                 task7()
                 task8()
                 task9()
+*/
                 task10()
         }
+
+
+
 
         def task1(unit: Unit): Unit = {
                 println("Task 1")
@@ -34,12 +45,12 @@ object Chapter3 {
         def task2(unit: Unit): Unit = {
                 println("Task 2")
                 var a: Array[Int] = null
-                a = createArray(5)
+                a = 5.createIntArray
                 println(a.mkString("< ", ", ", " >"))
                 a = swapPairInArray(a)
                 println(a.mkString("< ", ", ", " >"))
 
-                a = createArray(6)
+                a = 6.createIntArray
                 println(a.mkString("< ", ", ", " >"))
                 a = swapPairInArray(a)
                 println(a.mkString("< ", ", ", " >"))
@@ -55,24 +66,21 @@ object Chapter3 {
                         }
                         a
                 }
-
-                def createArray(n: Int): Array[Int] = { val b = (for (i <- 1 to n) yield i).toArray; b }
         }
 
         def task3(unit: Unit): Unit = {
                 println("Task 3")
-                def createArray(n: Int): Array[Int] = {(for (i <- 1 to n) yield i).toArray}
                 def swapPairInArray(a: Array[Int]): Array[Int] = {val b = (for (i <- a.indices) yield if (i % 2 == 1) a(i - 1) else if (i != a.length-1) a(i+1) else a(i)).toArray; b}
                 def swapPairFP(a: Array[Int]): Array[Int] = { val b = (1 to a.length).iterator.sliding(2, 2).map(x => Array(x.last, x.head).distinct).flatten.toArray; b}
 
                 def demo(n: Int): Unit = {
-                        println(createArray(n).mkString("< ", ", ", " >"))
-                        println(swapPairInArray(createArray(n)).mkString("< ", ", ", " >"))
+                        println(n.createIntArray.mkString("< ", ", ", " >"))
+                        println(swapPairInArray(n.createIntArray).mkString("< ", ", ", " >"))
                 }
                 //in functional style
                 def fdemo(n: Int): Unit = {
-                        println(createArray(n).mkString("< ", ", ", " >"))
-                        println(swapPairFP(createArray(n)).mkString("< ", ", ", " >"))
+                        println(n.createIntArray.mkString("< ", ", ", " >"))
+                        println(swapPairFP(n.createIntArray).mkString("< ", ", ", " >"))
                 }
 
                 demo(5); fdemo(5)
@@ -81,30 +89,90 @@ object Chapter3 {
         }
 
         def task4(unit: Unit): Unit = {
+                println("Task 4")
+                val a = 10.createRandomIntArrayBySeed(25)
+                a.printa
+                a.decreaseSort.printa
+                a.increaseSort.printa
 
+                def getByIndeces(ab: ArrayBuffer[Int], a: Array[Int]): ArrayBuffer[Int] = {
+                        val b = for (i <- ab) yield a(i)
+                        b
+                }
+
+                def positiveFirst(a: Array[Int]): Array[Int] = {
+                        val p, n, z = new ArrayBuffer[Int]
+                        for (i <- a.indices) if (a(i) > 0) {p += i} else if (a(i) == 0) {z += i} else {n += i}
+                        val res = new ArrayBuffer[Int]
+                        res.++=(getByIndeces(p, a)).++=(getByIndeces(z, a)).++=(getByIndeces(n, a)).toArray
+                }
+
+                def positiveFirstSort(a: Array[Int]): Array[Int] = {
+                        val p, n, z = new ArrayBuffer[Int]
+                        for (i <- a.indices) if (a(i) > 0) {p += i} else if (a(i) == 0) {z += i} else {n += i}
+                        val res = new ArrayBuffer[Int]
+                        res.++=(getByIndeces(p, a).toList.sortWith(_<_).toBuffer)
+                        res.++=(getByIndeces(z, a).toList.sortWith(_<_).toBuffer)
+                        res.++=(getByIndeces(n, a).toList.sortWith(_<_).toBuffer)
+                        res.toArray
+                }
+                positiveFirst(a).printa
+                positiveFirstSort(a).printa
         }
 
         def task5(unit: Unit): Unit = {
-
+                println("Task 5")
+                val a = 10.createRandomDoubleArray
+                a.printa
+                println(a.sum/a.length)
+                println(a.mean)
         }
 
         def task6(unit: Unit): Unit = {
-
+                println("Task 6")
+                val a = 10.createRandomIntArray
+                a.printa
+                a.reverse.printa
+                val ab = ArrayBuffer(4, 8, 15, 16, 23, 42)
+                ab.printab
+                ab.reverse.printab
         }
 
         def task7(unit: Unit): Unit = {
-
+                println("Task 7")
+                val a = Array(1, 3, 4, 3, 8, 15, 9, 1, 16, 7, 23, 7, 2, 42, 2, 9)
+                a.printa
+                a.distinct.printa
+                a.jot.printa
         }
 
         def task8(unit: Unit): Unit = {
-
+                println("Task 8")
+                val a = ArrayBuffer[Int](1, 2, -1, 3, 4, -2, 5, -3, 6)
+                var indexes = for (i <- a.indices if a(i) < 0) yield i
+                indexes = indexes.reverse.dropRight(1)
+                for (j <- indexes) a.remove(j)
+                a.printab
         }
 
         def task9(unit: Unit): Unit = {
+                println("Task 9")
+                val zones = getAvailableIDs
+                val filtered = zones.diff(zones.filter(_.startsWith("America/")))
+
+                val usa = zones.filter(_.startsWith("America/")).map( (s) => s.stripPrefix("America/")).sorted
+                println(usa.mkString(", "))
 
         }
 
         def task10(unit: Unit): Unit = {
+                println("Task 10")
+                val flavors = SystemFlavorMap.getDefaultFlavorMap.asInstanceOf[SystemFlavorMap]
+
+                val nativesForFlavors = flavors.getNativesForFlavors(Array(DataFlavor.imageFlavor))
+
+                val vals = collection.JavaConversions.asScalaBuffer(new java.util.LinkedList(nativesForFlavors.values()))
+                println(vals)
 
         }
 
