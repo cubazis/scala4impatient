@@ -144,6 +144,7 @@ object Chapter3 {
                 a.jot.printa
         }
 
+        /** What is the point of this task. I don't know */
         def task8(unit: Unit): Unit = {
                 println("Task 8")
                 val a = ArrayBuffer[Int](1, 2, -1, 3, 4, -2, 5, -3, 6)
@@ -163,6 +164,7 @@ object Chapter3 {
 
         }
 
+        /** What's going on here?*/
         def task10(unit: Unit): Unit = {
                 println("Task 10")
                 val flavors = SystemFlavorMap.getDefaultFlavorMap.asInstanceOf[SystemFlavorMap]

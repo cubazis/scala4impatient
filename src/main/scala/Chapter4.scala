@@ -1,15 +1,16 @@
 /**
   * Created by cubazis on 13.12.17.
   */
+
 object Chapter4 {
         def main(args: Array[String]): Unit = {
-                println("Here are some practice code from the text of Chapter N")
+                println("Here are some practice code from the text of Chapter 4")
                 repl()
-                println("Here are tasks code from the end of Chapter N")
-                tasks()
+                println("Here are tasks code from the end of Chapter 4")
+                //tasks()
         }
 
-        /** Here are tasks code from the end of Chapter N */
+        /** Here are tasks code from the end of Chapter 4 */
         def tasks(unit: Unit): Unit = {
                 task1()
                 task2()
@@ -63,6 +64,8 @@ object Chapter4 {
                 println("Task 10")
         }
 
-        /** Here are some practice code from the text of Chapter N */
-        def repl(unit: Unit): Unit = {}
+        /** Here are some practice code from the text of Chapter 4 */
+        def repl(unit: Unit): Unit = {
+                println("kekich")
+        }
 }
