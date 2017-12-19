@@ -1,3 +1,5 @@
+package Tools
+
 import scala.collection.mutable.ArrayBuffer
 import scala.util.{Random => r}
 

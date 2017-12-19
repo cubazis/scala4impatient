@@ -66,6 +66,15 @@ object Chapter4 {
 
         /** Here are some practice code from the text of Chapter 4 */
         def repl(unit: Unit): Unit = {
-                println("kekich")
+                /** my first map in Scala*/
+                val lost = Map(
+                        4 -> "Locke",
+                        8 -> "Reyes",
+                        15 -> "Ford",
+                        16 -> "Jarrah",
+                        23 -> "Shephard",
+                        42 -> "Kwon"
+                )
+                lost foreach(x => print (x._1 + " -> " + x._2 + ", "))
         }
 }
