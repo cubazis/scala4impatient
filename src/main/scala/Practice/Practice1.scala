@@ -2,10 +2,10 @@ package Practice
 
 object Practice1 {
         def main(args: Array[String]): Unit = {
-                //example1()
-                //example2()
-                //example3()
-                //example4()
+                example1()
+                example2()
+                example3()
+                example4()
                 example5()
 
         }
