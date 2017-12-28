@@ -1,9 +1,15 @@
+import java.io.File
+import java.util.Scanner
+
 import scala.collection.mutable.{HashMap => MutableMap}
 import scala.collection.immutable.{SortedMap => ImmutableTreeMap}
 import scala.collection.mutable.{TreeMap => MutableTreeMap}
 import scala.collection.mutable.{LinkedHashMap => LinkedMap}
-
+import scala.collection.JavaConversions.mapAsScalaMap
+import scala.collection.JavaConversions.propertiesAsScalaMap
 import Tools.ToolsC4._
+
+import scala.collection.mutable
 /**
   * Created by cubazis on 13.12.17.
   */
@@ -18,16 +24,16 @@ object Chapter4 {
 
         /** Here are tasks code from the end of Chapter 4 */
         def tasks(unit: Unit): Unit = {
-                //task1()
+                task1()
                 task2()
-                //task3()
-                //task4()
-                //task5()
-                //task6()
-                //task7()
-                //task8()
-                //task9()
-                //task10()
+                task3()
+                task4()
+                task5()
+                task6()
+                task7()
+                task8()
+                task9()
+                task10()
         }
 
         def task1(unit: Unit): Unit = {
@@ -40,40 +46,93 @@ object Chapter4 {
 
         def task2(unit: Unit): Unit = {
                 println("Task 2")
-                val goods = Map("mandarins" -> 39.90, "Salad" -> 54.50, "Cherri Tomato" -> 45.50)
-                goods.printmap()
+                val in = new Scanner(new File("store/test.txt"))
+                val map = new MutableMap[String, Int]
+                while (in.hasNext) {
+                        val w = in.next()
+                        map(w) = map.getOrElse(w, 0) + 1
+                }
+                map.printmap()
         }
 
         def task3(unit: Unit): Unit = {
                 println("Task 3")
+                val in = new Scanner(new File("store/test.txt"))
+                var map = Map[String, Int]()
+                while (in.hasNext) {
+                        val w = in.next()
+                        map += (w -> (map.getOrElse(w, 0) + 1))
+                }
+                map.printmap()
         }
 
         def task4(unit: Unit): Unit = {
                 println("Task 4")
+                val in = new Scanner(new File("store/test.txt"))
+                var map = ImmutableTreeMap[String, Int]()
+                while (in.hasNext) {
+                        val w = in.next()
+                        map += (w -> (map.getOrElse(w, 0) + 1))
+                }
+                map.printmap()
         }
 
         def task5(unit: Unit): Unit = {
                 println("Task 5")
+                val in = new Scanner(new File("store/test.txt"))
+                var map: scala.collection.mutable.Map[String, Int] = new java.util.TreeMap[String, Int]
+                while (in.hasNext) {
+                        val w = in.next()
+                        map(w) = map.getOrElse(w, 0) + 1
+                }
+                map.foreach(x => print(x._1+" -> "+x._2))
         }
 
         def task6(unit: Unit): Unit = {
                 println("Task 6")
+                val map = scala.collection.mutable.LinkedHashMap(
+                        "Monday" -> java.util.Calendar.MONDAY,
+                        "Tuesday" -> java.util.Calendar.TUESDAY,
+                        "Wednesday" -> java.util.Calendar.WEDNESDAY,
+                        "Thursday" -> java.util.Calendar.THURSDAY,
+                        "Friday" -> java.util.Calendar.FRIDAY,
+                        "Saturday" -> java.util.Calendar.SATURDAY,
+                        "Sunday" -> java.util.Calendar.SUNDAY
+                )
+                map.foreach(x => print(x._1+" -> "+x._2+", ")); println()
         }
 
         def task7(unit: Unit): Unit = {
                 println("Task 7")
+                val props: scala.collection.Map[String, String] = System.getProperties()
+                var maxk = 0
+                props.keys.foreach(k => maxk = maxk max k.length)
+                for((k, v) <- props) println(k.padTo(maxk, ' ') + " | " + v)
         }
 
         def task8(unit: Unit): Unit = {
                 println("Task 8")
+                def minmax(values: Array[Int]):(Int, Int) = (values.min, values.max)
+                val ar = Array(1, 2, 3, 4, 5, 6, 7, 8, 9, 10)
+                println(minmax(ar))
         }
 
         def task9(unit: Unit): Unit = {
                 println("Task 9")
+                def lteqgt(values: Array[Int], v:Int):(Int, Int, Int) = {
+                        var lt = 0
+                        var eq = 0
+                        var gt = 0
+                        values.foreach(x => if(x < v) lt += 1 else if (x == v) eq += 1 else gt += 1)
+                        (lt, eq, gt)
+                }
+                val ar = Array(1, 2, 3, 4, 5, 6, 7, 8, 9, 10)
+                println(lteqgt(ar, 5))
         }
 
         def task10(unit: Unit): Unit = {
                 println("Task 10")
+                println("Hello".zip("World"))
         }
 
         /** Here are some practice code from the text of Chapter 4 */
