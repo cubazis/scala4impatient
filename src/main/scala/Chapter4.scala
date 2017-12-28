@@ -9,7 +9,6 @@ import scala.collection.JavaConversions.mapAsScalaMap
 import scala.collection.JavaConversions.propertiesAsScalaMap
 import Tools.ToolsC4._
 
-import scala.collection.mutable
 /**
   * Created by cubazis on 13.12.17.
   */
@@ -17,7 +16,7 @@ import scala.collection.mutable
 object Chapter4 {
         def main(args: Array[String]): Unit = {
                 println("Here are some practice code from the text of Chapter 4")
-                //repl()
+                repl()
                 println("Here are tasks code from the end of Chapter 4")
                 tasks()
         }
