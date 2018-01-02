@@ -5,7 +5,7 @@ object Chapter5 {
                 println("Here are some practice code from the text of Chapter 5")
                 repl()
                 println("Here are tasks code from the end of Chapter 5")
-                tasks()
+                //tasks()
         }
 
         /** Here are tasks code from the end of Chapter 5 */
@@ -62,6 +62,6 @@ object Chapter5 {
                 println("Task 10")
         }
 
-        /** Here are some practice code from the text of Chapter N */
+        /** Here are some practice code from the text of Chapter 5 */
         def repl(unit: Unit): Unit = {}
 }
