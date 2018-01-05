@@ -63,5 +63,20 @@ object Chapter5 {
         }
 
         /** Here are some practice code from the text of Chapter 5 */
-        def repl(unit: Unit): Unit = {}
+        def repl(unit: Unit): Unit = {
+
+                class Counter {
+                        private var value = 0
+                        def increment(): Unit = {
+                                value += 1
+                        }
+                        def current() = value
+                }
+
+                val myCounter = new Counter()
+                println("myCounter value: "+myCounter.current)
+                myCounter.increment()
+                println("myCounter value: "+myCounter.current)
+
+        }
 }
